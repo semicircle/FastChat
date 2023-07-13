@@ -920,13 +920,13 @@ class WizardLMAdapter(BaseModelAdapter):
 class AshleyLMAdapter(BaseModelAdapter):
     """The model adapter for AshleyLM"""
 
-    use_fast_tokenizer = False
+    use_fast_tokenizer = True
 
     def match(self, model_path: str):
         return "ashleylm" in model_path.lower()
 
     def get_default_conv_template(self, model_path: str) -> Conversation:
-        return get_conv_template("ashley")
+        return get_conv_template("ashleylm")
 
 class ManticoreAdapter(BaseModelAdapter):
     """The model adapter for openaccess-ai-collective/manticore-13b-chat-pyg"""
@@ -1163,6 +1163,7 @@ register_model_adapter(H2OGPTAdapter)
 register_model_adapter(RobinAdapter)
 register_model_adapter(SnoozyAdapter)
 register_model_adapter(WizardLMAdapter)
+register_model_adapter(AshleyLMAdapter)
 register_model_adapter(ManticoreAdapter)
 register_model_adapter(GuanacoAdapter)
 register_model_adapter(CamelAdapter)
