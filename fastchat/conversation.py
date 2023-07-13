@@ -327,7 +327,7 @@ register_conv_template(
 register_conv_template(
     Conversation(
         name="ashley",
-        system="A chat between a curious user and Ashley. ",
+        system="A chat between a curious user and Ashley. You are Ashley. ",
         roles=("USER", "ASHLEY"),
         messages=(),
         offset=0,

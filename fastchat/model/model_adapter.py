@@ -903,7 +903,7 @@ class SnoozyAdapter(BaseModelAdapter):
 class WizardLMAdapter(BaseModelAdapter):
     """The model adapter for WizardLM/WizardLM-13B-V1.0"""
 
-    use_fast_tokenizer = False
+    use_fast_tokenizer = True
 
     def match(self, model_path: str):
         return "wizardlm" in model_path.lower()

@@ -204,6 +204,11 @@ class ModelWorker(BaseModelWorker):
             cpu_offloading,
             gptq_config,
         )
+        # add debug info to detect wizardlm bos bug
+        logger.info(f"Tokenizer: {self.tokenizer}")
+        logger.info(f"Tokenizer bos_token: {self.tokenizer.bos_token}")
+        logger.info(f"Tokenizer eos_token: {self.tokenizer.eos_token}")
+        
         self.device = device
         if self.tokenizer.pad_token == None:
             self.tokenizer.pad_token = self.tokenizer.eos_token
