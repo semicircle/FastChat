@@ -911,12 +911,22 @@ class WizardLMAdapter(BaseModelAdapter):
     def get_default_conv_template(self, model_path: str) -> Conversation:
         model_path = model_path.lower()
         if "13b" in model_path or "30b" in model_path or "33b" in model_path:
-            return get_conv_template("vicuna_v1.1")
+            return get_conv_template("wizardlm")
         else:
             # TODO: use the recommended template for 7B
             # (https://huggingface.co/WizardLM/WizardLM-13B-V1.0)
             return get_conv_template("one_shot")
 
+class AshleyLMAdapter(BaseModelAdapter):
+    """The model adapter for AshleyLM"""
+
+    use_fast_tokenizer = False
+
+    def match(self, model_path: str):
+        return "ashleylm" in model_path.lower()
+
+    def get_default_conv_template(self, model_path: str) -> Conversation:
+        return get_conv_template("ashley")
 
 class ManticoreAdapter(BaseModelAdapter):
     """The model adapter for openaccess-ai-collective/manticore-13b-chat-pyg"""
