@@ -91,6 +91,10 @@ def generate_stream(
     input_ids = input_ids[-max_src_len:]
     input_echo_len = len(input_ids)
 
+    #add debug info:
+    deocded_input_ids = tokenizer.decode(input_ids)
+    print(f"[Debug]generate_stream: deocded_input_ids: {deocded_input_ids}")
+
     if model.config.is_encoder_decoder:
         encoder_output = model.encoder(
             input_ids=torch.as_tensor([input_ids], device=device)
